@@ -12,6 +12,7 @@ import router from './router'
 
 // Prime Vue imports
 import Menubar from 'primevue/menubar';
+import MegaMenu from 'primevue/megamenu';
 import InputText from 'primevue/inputtext';
 import Avatar from 'primevue/avatar';
 import Badge from 'primevue/badge';
@@ -24,6 +25,7 @@ import InputGroupAddon from 'primevue/inputgroupaddon';
 const app = createApp(App)
 
 app.component('Menubar', Menubar)
+app.component('MegaMenu', MegaMenu)
 app.component('InputText', InputText)
 app.component('Avatar', Avatar)
 app.component('Badge', Badge)
