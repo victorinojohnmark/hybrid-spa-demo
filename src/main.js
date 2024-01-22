@@ -17,6 +17,9 @@ import Avatar from 'primevue/avatar';
 import Badge from 'primevue/badge';
 import Ripple from 'primevue/ripple';
 import Button from 'primevue/button';
+import Chip from 'primevue/chip';
+import InputGroup from 'primevue/inputgroup';
+import InputGroupAddon from 'primevue/inputgroupaddon';
 
 const app = createApp(App)
 
@@ -26,6 +29,9 @@ app.component('Avatar', Avatar)
 app.component('Badge', Badge)
 app.directive('ripple', Ripple);
 app.component('Button', Button)
+app.component('Chip', Chip)
+app.component('InputGroup', InputGroup)
+app.component('InputGroupAddon', InputGroupAddon)
 
 app.use(createPinia())
 app.use(router)
