@@ -3,9 +3,9 @@
     <div class="w-full md:border-b md:border-gray-100">
       <Menubar :model="items" class="rounded-none container mx-auto border-0">
         <template #start class="">
-          <div class="flex ml-3 mr-5 gap-x-3 items-center">
-            <i class="pi pi-shopping-bag text-lg text-red-500"></i>
-            <h1 class="text-gray-700 dark:text-white text-lg font-semibold">Ariazon</h1>
+          <div class="flex items-center">
+            <!-- <i class="pi pi-shopping-bag text-lg text-red-500"></i> -->
+            <img src="/img/ariazon_logo.png" class=" w-32" alt="">
           </div>
         </template>
         <template #item="{ item, props, hasSubmenu, root }">
