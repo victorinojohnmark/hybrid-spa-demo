@@ -18,7 +18,7 @@
         </template>
         <template #end>
             <div class="flex items-center gap-2">
-                <Button label="Place Your Ad" severity="danger" size="small" @click="showModalForm = true" />
+                <Button label="Place Ad" severity="danger" size="small" @click="showModalForm = true" />
 
                 <Dialog v-model:visible="showModalForm" dismissableMask modal header="Product Upload" :style="{ width: '50rem' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw', '360px': '100vw' }">
                     <ItemForm :item="refProduct" />
