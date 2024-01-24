@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-gray-50 w-full border-b border-gray-100 mb-5">
+  <header class="bg-gray-50 w-full border-b border-gray-100 mb-5 text-sm">
     <div class="w-full md:border-b md:border-gray-100">
       <Menubar :model="items" class="rounded-none container mx-auto border-0">
         <template #start class="">
@@ -18,7 +18,11 @@
         </template>
         <template #end>
             <div class="flex items-center gap-2">
-                <Button label="Place Your Ad" severity="danger" size="small"/>
+                <Button label="Place Your Ad" severity="danger" size="small" @click="showModalForm = true" />
+
+                <Dialog v-model:visible="showModalForm" dismissableMask modal header="Product Upload" :style="{ width: '50rem' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw', '360px': '100vw' }">
+                    <ItemForm :item="refProduct" />
+                </Dialog>
                 <Avatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" shape="circle" class="w-10 h-10" />
                 <Button icon="pi pi-moon" severity="secondary" text rounded aria-label="Dark Mode" />
             </div>
@@ -30,7 +34,7 @@
   </header>
   <main class="px-3">
     <section id="banner" class="container mx-auto rounded-md mb-5">
-      <div class="flex flex-col items-center justify-center container mx-auto text-center max-w-4xl py-5 px-3 h-72">
+      <div class="flex flex-col items-center justify-center container mx-auto text-center max-w-4xl py-8 px-3 md:h-72">
         <h1 class="text-white text-2xl font-semibold drop-shadow-md mb-3">The best place to buy your house, sell your car or find the best gadgets.</h1>
         <div class="flex flex-col w-full rounded-md backdrop-blur-sm bg-gray-900/30 p-3">
           <div id="searchSelection" class="flex flex-row font-semibold text-sm gap-x-2 mb-2">
@@ -119,78 +123,85 @@
 
     <section id="items" class="container mx-auto mb-5">
         <div id="popularItems">
-            <div class="flex flex-row justify-between">
+            <div class="flex flex-row justify-between px-2">
                 <strong class="text-gray-800 text-xl">Items for Sale</strong>
                 <i class="pi pi-arrow-right text-gray-700"></i>
             </div>
 
             <div class="flex flex-wrap flex-row overflow-hidden pb-5 mb-5">
-                <div class="item-card w-1/2 md:w-1/4 lg:w-1/5 p-3 px-2">
+                <div class="item-card w-1/2 md:w-1/4 lg:w-1/5 p-1 md:pb-3.5">
                     <a href="#" class="">
-                        <div class="rounded p-3 shadow-md hover:shadow-lg">
-                            <img src="/img/kitchen.jpg" alt="" class="rounded-md aspect-video object-cover object-center">
-                            <strong class="text-red-600 leading-8">AFN 135,000</strong>
-                            <p class="text-gray-900 text-sm font-semibold">Studio • 1 Bath</p>
-                            <p class="text-sm">Kabul</p>
+                        <div class="rounded overflow-hidden pb-3 md:p-3 shadow-sm md:shadow-none md:hover:shadow-xl transition-all duration-500">
+                            <img src="/img/kitchen.jpg" alt="" class="md:rounded-md aspect-square md:aspect-6/4 object-cover object-center">
+                            <strong class="text-red-600 leading-8 px-2 md:px-0">AFN 135,000</strong>
+                            <p class="text-gray-900 text-sm font-semibold px-2 md:px-0">Studio • 1 Bath</p>
+                            <p class="text-sm text-gray-500 px-2 md:px-0">Kabul</p>
                         </div>
                     </a>
                 </div>
 
-                <div class="item-card w-1/2 md:w-1/4 lg:w-1/5 p-3 px-2">
+                <div class="item-card w-1/2 md:w-1/4 lg:w-1/5 p-1 md:pb-3.5">
                     <a href="#" class="">
-                        <div class="rounded p-3 shadow-md hover:shadow-lg">
-                            <img src="/img/bike.jpeg" alt="" class="rounded-md aspect-video object-cover object-center">
-                            <strong class="text-red-600 leading-8">AFN 5,000</strong>
-                            <p class="text-gray-900 text-sm font-semibold">JAVA Hybrid Bike</p>
-                            <p class="text-sm">Herat</p>
+                        <div class="rounded overflow-hidden pb-3 md:p-3 shadow-sm md:shadow-none md:hover:shadow-xl transition-all duration-500">
+                            <img src="/img/bike.jpeg" alt="" class="md:rounded-md aspect-square md:aspect-6/4 object-cover object-center">
+                            <strong class="text-red-600 leading-8 px-2 md:px-0">AFN 5,000</strong>
+                            <p class="text-gray-900 text-sm font-semibold px-2 md:px-0">JAVA Hybrid Bike</p>
+                            <p class="text-sm text-gray-500 px-2 md:px-0">Herat</p>
                         </div>
                     </a>
                 </div>
 
-                <div class="item-card w-1/2 md:w-1/4 lg:w-1/5 p-3 px-2">
+                <div class="item-card w-1/2 md:w-1/4 lg:w-1/5 p-1 md:pb-3.5">
                     <a href="#" class="">
-                        <div class="rounded p-3 shadow-md hover:shadow-lg">
-                            <img src="/img/phone.jpeg" alt="" class="rounded-md aspect-video object-cover object-center">
-                            <strong class="text-red-600 leading-8">AFN 1,000</strong>
-                            <p class="text-gray-900 text-sm font-semibold">Samsung S22 Ultra</p>
-                            <p class="text-sm">Herat</p>
+                        <div class="rounded overflow-hidden pb-3 md:p-3 shadow-sm md:shadow-none md:hover:shadow-xl transition-all duration-500">
+                            <img src="/img/phone.jpeg" alt="" class="md:rounded-md aspect-square md:aspect-6/4 object-cover object-center">
+                            <strong class="text-red-600 leading-8 px-2 md:px-0">AFN 1,000</strong>
+                            <p class="text-gray-900 text-sm font-semibold px-2 md:px-0">Samsung S22 Ultra</p>
+                            <p class="text-sm text-gray-500 px-2 md:px-0">Herat</p>
                         </div>
                     </a>
                 </div>
 
-                <div class="item-card w-1/2 md:w-1/4 lg:w-1/5 p-3 px-2">
+                <div class="item-card w-1/2 md:w-1/4 lg:w-1/5 p-1 md:pb-3.5">
                     <a href="#" class="">
-                        <div class="rounded p-3 shadow-md hover:shadow-lg">
-                            <img src="/img/pickup-truck.jpeg" alt="" class="rounded-md aspect-video object-cover object-center">
-                            <strong class="text-red-600 leading-8">AFN 250,000</strong>
-                            <p class="text-gray-900 text-sm font-semibold">Toyota Hilux 2023</p>
-                            <p class="text-sm">Kandahar</p>
+                        <div class="rounded overflow-hidden pb-3 md:p-3 shadow-sm md:shadow-none md:hover:shadow-xl transition-all duration-500">
+                            <img src="/img/pickup-truck.jpeg" alt="" class="md:rounded-md aspect-square md:aspect-6/4 object-cover object-center">
+                            <strong class="text-red-600 leading-8 px-2 md:px-0">AFN 250,000</strong>
+                            <p class="text-gray-900 text-sm font-semibold px-2 md:px-0">Toyota Hilux 2023</p>
+                            <p class="text-sm text-gray-500 px-2 md:px-0">Kandahar</p>
                         </div>
                     </a>
                 </div>
 
-                <div class="item-card w-1/2 md:w-1/4 lg:w-1/5 p-3 px-2">
+                <div class="item-card w-1/2 md:w-1/4 lg:w-1/5 p-1 md:pb-3.5">
                     <a href="#" class="">
-                        <div class="rounded p-3 shadow-md hover:shadow-lg">
-                            <img src="/img/lamp.jpeg" alt="" class="rounded-md aspect-video object-cover object-center">
-                            <strong class="text-red-600 leading-8">AFN 4000</strong>
-                            <p class="text-gray-900 text-sm font-semibold">Lamp Shade</p>
-                            <p class="text-sm">Kandahar</p>
+                        <div class="rounded overflow-hidden pb-3 md:p-3 shadow-sm md:shadow-none md:hover:shadow-xl transition-all duration-500">
+                            <img src="/img/lamp.jpeg" alt="" class="md:rounded-md aspect-square md:aspect-6/4 object-cover object-center">
+                            <strong class="text-red-600 leading-8 px-2 md:px-0">AFN 4000</strong>
+                            <p class="text-gray-900 text-sm font-semibold px-2 md:px-0">Lamp Shade</p>
+                            <p class="text-sm text-gray-500 px-2 md:px-0">Kandahar</p>
                         </div>
                     </a>
                 </div>
-                
-                
                 
             </div>
         </div>
     </section>
       
   </main>
+
+  <footer class="w-full">
+    <div class="container mx-auto px-4 py-8">
+        
+    </div>
+  </footer>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import ItemForm from './ItemForm.vue'
+
+const showModalForm = ref(false)
 
 const items = ref([
     {
@@ -319,6 +330,15 @@ const megaMenuItems = ref([
         ]
     }
 ]);
+
+const refProduct = ref({
+    'productName': '',
+    'price': 0.00,
+    'quantity': 1,
+    'image': ''
+})
+
+
 </script>
 
 <style scoped>

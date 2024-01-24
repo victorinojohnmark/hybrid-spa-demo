@@ -21,6 +21,7 @@ import Button from 'primevue/button';
 import Chip from 'primevue/chip';
 import InputGroup from 'primevue/inputgroup';
 import InputGroupAddon from 'primevue/inputgroupaddon';
+import Dialog from 'primevue/dialog';
 
 const app = createApp(App)
 
@@ -34,6 +35,7 @@ app.component('Button', Button)
 app.component('Chip', Chip)
 app.component('InputGroup', InputGroup)
 app.component('InputGroupAddon', InputGroupAddon)
+app.component('Dialog', Dialog)
 
 app.use(createPinia())
 app.use(router)
