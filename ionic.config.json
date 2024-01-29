@@ -1,0 +1,7 @@
+{
+  "name": "hybrid-spa-demo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
