@@ -1,17 +1,24 @@
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import { useAuthStore } from './stores/auth'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import Toast from 'vue-toastification'
+import toastConfig from './toast'
+
 import './assets/main.css'
 import 'primeicons/primeicons.css'
 import './axios'
+import 'vue-toastification/dist/index.css'
 
-
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config';
 import Lara from '@/presets/lara';
 import Wind from '@/presets/wind';
-import ToastService from 'primevue/toastservice';
 
 import App from './App.vue'
 import router from './router'
+
+const pinia = createPinia()
+const app = createApp(App)
 
 // Prime Vue imports
 import Menubar from 'primevue/menubar';
@@ -27,9 +34,8 @@ import InputGroup from 'primevue/inputgroup';
 import InputGroupAddon from 'primevue/inputgroupaddon';
 import Dialog from 'primevue/dialog';
 import FileUpload from 'primevue/fileupload';
-import Toast from 'primevue/toast';
-
-const app = createApp(App)
+import Textarea from 'primevue/textarea';
+import Card from 'primevue/card';
 
 app.component('Menubar', Menubar)
 app.component('MegaMenu', MegaMenu)
@@ -44,14 +50,22 @@ app.component('InputGroup', InputGroup)
 app.component('InputGroupAddon', InputGroupAddon)
 app.component('Dialog', Dialog)
 app.component('FileUpload', FileUpload)
-app.component('Toast', Toast)
+app.component('Textarea', Textarea)
+app.component('Card', Card)
 
-app.use(createPinia())
-app.use(ToastService);
+pinia.use(piniaPluginPersistedstate)
+
+app.use(pinia)
 app.use(router)
 app.use(PrimeVue, {
     unstyled: true,
     pt: Lara
 });
+app.use(Toast, toastConfig)
 
-app.mount('#app')
+const authStore = useAuthStore()
+
+authStore.checkAuthentication().then(() => {
+    app.mount('#app')
+})
+

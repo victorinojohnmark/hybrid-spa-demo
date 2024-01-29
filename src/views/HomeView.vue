@@ -1,5 +1,4 @@
 <template>
-    <Toast />
     <header class="bg-gray-50 w-full border-b border-gray-100 mb-5 text-sm sticky md:relative top-0 z-10 md:z-0">
         <div class="w-full md:border-b md:border-gray-100">
         <Menubar :model="items" class="rounded-none container mx-auto border-0">
@@ -54,7 +53,7 @@
               </InputGroupAddon>
             </InputGroup>
             </div>
-            <Button label="Search" severity="danger" class="p-5 py-3" />
+            <Button label="Search" severity="danger" class="p-5 py-3" @click="toast.info('Hello')" />
           </div>
         </div>
       </div>
@@ -153,12 +152,11 @@
 <script setup>
 import { ref, onBeforeMount } from 'vue';
 import ItemForm from './ItemForm.vue'
-import { useToast } from 'primevue/usetoast';
 import axios from 'axios'
+import { useToast } from 'vue-toastification';
 
-const toast = useToast();
 const showModalForm = ref(false)
-
+const toast = useToast()
 const items = ref([
     {
       label: 'Provinces',
@@ -289,6 +287,7 @@ const megaMenuItems = ref([
 
 const handleItemCreated = async (item) => {
     showModalForm.value = false
+    
 }
 
 const refProduct = ref({
