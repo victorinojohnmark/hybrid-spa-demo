@@ -9,6 +9,7 @@ import './assets/main.css'
 import 'primeicons/primeicons.css'
 import './axios'
 import 'vue-toastification/dist/index.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 
 import PrimeVue from 'primevue/config';
 import Lara from '@/presets/lara';
@@ -16,6 +17,15 @@ import Wind from '@/presets/wind';
 
 import App from './App.vue'
 import router from './router'
+
+//Vue-FontAwesome
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+library.add(fas, far, fab)
+dom.watch();
 
 const pinia = createPinia()
 const app = createApp(App)
@@ -52,6 +62,9 @@ app.component('Dialog', Dialog)
 app.component('FileUpload', FileUpload)
 app.component('Textarea', Textarea)
 app.component('Card', Card)
+
+// Add Fontawesome component
+app.component('font-awesome-icon', FontAwesomeIcon);
 
 pinia.use(piniaPluginPersistedstate)
 

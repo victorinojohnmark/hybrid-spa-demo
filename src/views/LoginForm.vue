@@ -31,7 +31,12 @@
                                 <p class="mt-2 text-sm font-semibold text-red-400">{{ authStore.status }}</p>
                             </div>
 
-                            <Button label="Sign In" type="submit" class="w-full mt-1" />
+                            <div class="flex gap-2 mt-1">
+                                <Button label="Sign In" type="submit" class="flex-1" />
+                                <Button icon="fas fa-fingerprint" :pt="{ 
+                                    icon: { class: 'text-lg' } 
+                                }" class="" />
+                            </div>
                         </form>
                     </template>
                 </Card>
