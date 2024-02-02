@@ -33,9 +33,7 @@
 
                             <div class="flex gap-2">
                                 <Button label="Sign In" type="submit" class="flex-1" />
-                                <Button icon="fas fa-fingerprint" :pt="{ 
-                                    icon: { class: 'text-lg' } 
-                                }" class="" />
+                                <FingerPrintComponent />
                             </div>
                         </form>
                     </template>
@@ -48,6 +46,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/auth';
+import FingerPrintComponent from './FingerPrintComponent.vue';
 
 const authStore = useAuthStore()
 const loginData = ref({

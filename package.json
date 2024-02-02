@@ -11,6 +11,8 @@
     "ionic:serve": "vite dev --host"
   },
   "dependencies": {
+    "@awesome-cordova-plugins/core": "^6.6.0",
+    "@awesome-cordova-plugins/fingerprint-aio": "^6.6.0",
     "@capacitor/android": "5.6.0",
     "@capacitor/app": "5.0.6",
     "@capacitor/cli": "5.6.0",
@@ -25,6 +27,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/vue-fontawesome": "^3.0.6",
     "axios": "^1.6.7",
+    "cordova-plugin-fingerprint-aio": "^5.0.1",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
     "primeicons": "^6.0.1",
