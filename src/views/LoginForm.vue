@@ -27,11 +27,11 @@
                                 <small v-if="authStore.errors && authStore.errors.email" class="text-red-400">{{ authStore.errors.password[0] }}</small>
                             </div>
 
-                            <div v-if="authStore.status" class="mb-4">
+                            <div v-if="authStore.status" class="mb-3">
                                 <p class="mt-2 text-sm font-semibold text-red-400">{{ authStore.status }}</p>
                             </div>
 
-                            <div class="flex gap-2 mt-1">
+                            <div class="flex gap-2">
                                 <Button label="Sign In" type="submit" class="flex-1" />
                                 <Button icon="fas fa-fingerprint" :pt="{ 
                                     icon: { class: 'text-lg' } 
@@ -56,7 +56,8 @@ const loginData = ref({
 })
 
 const handleLogin = async () => {
-    
+    await authStore.handleLogin(loginData.value)
+    loginData.value.password
 }
 </script>
 

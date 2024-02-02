@@ -25,13 +25,13 @@ export const useAuthStore = defineStore('auth', {
         async checkAuthentication() {
             await this.initializeToken();
 
-            if(this.user && this.user.authorization.token) {
+            if(this.user && this.user.token) {
                 try {
                     const data = await axios.get('/api/auth/user', {
                         headers: {
                             "Accept": "application/json",
                             "Content-Type": "application/json",
-                            "Authorization": `Bearer ${this.user.authorization.token}`
+                            "Authorization": `Bearer ${this.user.token}`
                         }
                     })
     
@@ -75,7 +75,7 @@ export const useAuthStore = defineStore('auth', {
                     headers: {
                         "Accept": "application/json",
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${this.user.authorization.token}`
+                        "Authorization": `Bearer ${this.user.token}`
                     }
                 });
                 this.authUser = null
